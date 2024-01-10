@@ -14,6 +14,9 @@ $layout-breakpoint-lg: 1024px;
 body {
   font-family: Nunito, sans-serif;
   background-color: colors.$background-primary;
+
+  /* Design in figma supports only more than 360px, so I decided to restrict it here. */
+  min-width: 360px;
 }
 
 h1 {

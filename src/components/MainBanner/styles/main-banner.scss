@@ -24,6 +24,9 @@
     @media (min-width: global.$layout-breakpoint-mobile) and (max-width: global.$layout-breakpoint-tablet) {
       max-width: 328px;
     }
+    @media (max-width: global.$layout-breakpoint-mobile - 1) {
+      padding: 0 20px;
+    }
   }
 
   h1 {
