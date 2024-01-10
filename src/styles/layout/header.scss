@@ -1,23 +1,24 @@
-@import "../base/global";
+@use '../base/global';
+
 .header {
   background-color: #ffffff;
   height: 60px;
 
   &-wrapper {
-    max-width: 1024px;
+    max-width: global.$layout-default-size;
     height: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 14px;
-  }
 
-  @media (max-width: $layout-breakpoint-tablet) {
-    padding: 0 16px;
-  }
-  @media (min-width: $layout-breakpoint-tablet) and (max-width: $layout-breakpoint-lg){
-    padding: 0 32px;
+    @media (max-width: global.$layout-breakpoint-tablet) {
+      padding: 0 16px;
+    }
+    @media (min-width: global.$layout-breakpoint-tablet) and (max-width: global.$layout-breakpoint-lg){
+      padding: 0 60px;
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-@import "../base/colors";
+@use "../base/colors";
 
 .button {
   width: 100px;
@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $primary;
+  background-color: colors.$primary;
   border-radius: 80px;
   font-size: 16px;
   line-height: 1.62;
@@ -16,10 +16,10 @@
   border: none;
 
   &:hover {
-    background-color: $primary-hover;
+    background-color: colors.$primary-hover;
   }
 
   &[disabled] {
-    background-color: $disabled-gray;
+    background-color: colors.$disabled-gray;
   }
 }

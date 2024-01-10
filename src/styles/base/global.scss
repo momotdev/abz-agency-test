@@ -1,5 +1,6 @@
-@import "colors";
+@use 'colors';
 
+$layout-default-size: 1170px;
 $layout-breakpoint-mobile: 360px;
 $layout-breakpoint-tablet: 768px;
 $layout-breakpoint-lg: 1024px;
@@ -12,5 +13,10 @@ $layout-breakpoint-lg: 1024px;
 
 body {
   font-family: Nunito, sans-serif;
-  background-color: $background-primary;
+  background-color: colors.$background-primary;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 1;
 }
