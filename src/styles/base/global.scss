@@ -1,5 +1,9 @@
 @import "colors";
 
+$layout-breakpoint-mobile: 360px;
+$layout-breakpoint-tablet: 768px;
+$layout-breakpoint-lg: 1024px;
+
 *,
 *::before,
 *::after {

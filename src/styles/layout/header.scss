@@ -1,3 +1,4 @@
+@import "../base/global";
 .header {
   background-color: #ffffff;
   height: 60px;
@@ -8,6 +9,19 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 14px;
   }
 
+  @media (max-width: $layout-breakpoint-tablet) {
+    padding: 0 16px;
+  }
+  @media (min-width: $layout-breakpoint-tablet) and (max-width: $layout-breakpoint-lg){
+    padding: 0 32px;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
 }
