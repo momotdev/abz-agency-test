@@ -1,12 +1,10 @@
 import './styles/index.scss';
+import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Hello abz
-      </header>
-    </div>
+    <Layout>
+    </Layout>
   );
 }
 
