@@ -1,16 +1,26 @@
+@use '/src/styles/base/global';
+
 .user-card {
-  width: 282px;
+  width: 370px;
   height: 254px;
   text-align: center;
   line-height: 1.62;
   border-radius: 10px;
   background: #ffffff;
+  flex-shrink: 0;
+  padding: 20px;
+
+  @media (max-width: global.$layout-breakpoint-tablet) {
+    width: 328px;
+  }
+  @media (min-width: global.$layout-breakpoint-tablet) and (max-width: global.$layout-default-size) {
+    width: 304px;
+  }
 
   &__image-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
   }
   &__image {
     width: 70px;
@@ -27,7 +37,9 @@
     margin-top: 20px;
   }
   &__email {
-
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   &__phone-number {
 

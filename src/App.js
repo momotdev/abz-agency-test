@@ -7,6 +7,7 @@ import {QueryClient, QueryClientProvider} from "react-query";
 const queryClient = new QueryClient()
 
 // TODO: FIX INDENTS
+// TODO: Buttons size
 function App() {
   return (
       <QueryClientProvider client={queryClient}>
