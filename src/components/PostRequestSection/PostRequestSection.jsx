@@ -40,9 +40,9 @@ const PostRequestSection = () => {
           </div>
           <fieldset className="post-request-section__select">
             <label>Select your position</label>
-            {data?.positions.map(position => (
+            {data?.positions.map((position, index) => (
                 <div key={position.id} className="post-request-section__radio-box">
-                  <input type="radio" id={position.id} {...register("position", {required: true})} name="position"
+                  <input type="radio" id={position.id} defaultChecked={index === 0} {...register("position", {required: true})} name="position"
                          value={position.id}/>
                   <label htmlFor={position.id}>{position.name}</label>
                 </div>))}
