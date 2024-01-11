@@ -11,7 +11,7 @@ const GetRequestSection = () => {
     hasNextPage,
     fetchNextPage
   } = useInfiniteQuery(['users'], ({pageParam}) => fetchUsers(pageParam), {
-    getNextPageParam: (lastPage, allPages) => {
+    getNextPageParam: (lastPage) => {
       return lastPage.links.next_url ? {page: lastPage.page + 1} : undefined;
     },
     refetchOnWindowFocus: false,
@@ -25,7 +25,7 @@ const GetRequestSection = () => {
         <div className="get-request-section__list-wrapper">
           {data?.pages
               .flatMap(page => page.users)
-              .toSorted((a, b) => a.registration_timestamp - b.registration_timestamp)
+              .toSorted((a, b) => b.registration_timestamp - a.registration_timestamp)
               .map(user => <UserCard key={user.id} {...user}/>)}
         </div>
         <div className="get-request-section__button-wrapper">
