@@ -1,0 +1,35 @@
+.user-card {
+  width: 282px;
+  height: 254px;
+  text-align: center;
+  line-height: 1.62;
+  border-radius: 10px;
+  background: #ffffff;
+
+  &__image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  &__image {
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+  }
+  &__name {
+    margin-top: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  &__position {
+    margin-top: 20px;
+  }
+  &__email {
+
+  }
+  &__phone-number {
+
+  }
+}
