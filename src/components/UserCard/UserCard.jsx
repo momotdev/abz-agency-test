@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styles/user-card.scss';
+import NoImage from './assets/photo-cover.svg';
 
 const UserCard = ({photo, name, position, email, phone}) => {
+  const [imgSrc, setImgSrc] = useState(photo);
   return (
       <div className="user-card">
         <div className="user-card__image-wrapper">
-          <img src={photo} alt={name} className="user-card__image"/>
+          <img src={imgSrc} onError={() => setImgSrc(NoImage)} alt={name} className="user-card__image"/>
         </div>
         <div className="user-card__name">{name}</div>
         <div className="user-card__position">{position}</div>
