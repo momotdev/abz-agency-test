@@ -18,7 +18,7 @@ const GetRequestSection = () => {
   });
 
   return (
-      <div className="section get-request-section">
+      <section className="section get-request-section">
         <div className="get-request-section__title">
           Working with GET request
         </div>
@@ -31,7 +31,7 @@ const GetRequestSection = () => {
         <div className="get-request-section__button-wrapper">
           {hasNextPage && <BasicButton onClick={() => fetchNextPage()}>Show More</BasicButton>}
         </div>
-      </div>
+      </section>
   );
 };
 
