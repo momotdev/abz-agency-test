@@ -50,7 +50,9 @@ const PostRequestSection = () => {
   const queryClient = new useQueryClient();
   const [isRegistered, setIsRegistered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { data } = useQuery(['positions'], fetchPositions);
+  const { data } = useQuery(['positions'], fetchPositions, {
+    refetchOnWindowFocus: false
+  });
   const onSubmit = async (data) => {
     setIsLoading(true);
     await createUser({ ...data, picture: data.picture[0] }).then((response) => {
