@@ -8,6 +8,7 @@ const getToken = async () => {
   }
   return response.json();
 };
+
 export const fetchUsers = async (pageParam) => {
   const page = pageParam?.page ?? 1;
   const response = await fetch(`${BASE_URL}/users?page=${page}&count=${PAGE_SIZE}`);
