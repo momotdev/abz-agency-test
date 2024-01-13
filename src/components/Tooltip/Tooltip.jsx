@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const Tooltip = ({text, children}) => {
+const Tooltip = ({ text, children }) => {
   const [active, setActive] = useState(false);
 
   let timeout;
@@ -9,7 +9,7 @@ const Tooltip = ({text, children}) => {
     timeout = setTimeout(() => {
       setActive(true);
     }, 400);
-  }
+  };
 
   const hideTooltip = () => {
     clearInterval(timeout);
@@ -17,15 +17,10 @@ const Tooltip = ({text, children}) => {
   };
 
   return (
-      <div className='tooltip'
-           onMouseEnter={showTooltip}
-           onMouseLeave={hideTooltip}
-      >
-        {children}
-        {active &&
-            <span className="tooltip__text bottom">{text}</span>}
-
-      </div>
+    <div className='tooltip' onMouseEnter={showTooltip} onMouseLeave={hideTooltip}>
+      {children}
+      {active && <span className='tooltip__text bottom'>{text}</span>}
+    </div>
   );
 };
 
