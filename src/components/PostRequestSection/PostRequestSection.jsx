@@ -81,11 +81,8 @@ const PostRequestSection = () => {
       {!isRegistered && !isLoading && (
         <form onSubmit={handleSubmit(onSubmit)} className='post-request-section__form'>
           <div className='post-request-section__input-group'>
-            <BasicInput
-              name='name'
-              placeholder='Your name' register={register} errors={errors.name} />
-            <BasicInput name='email'
-              placeholder='Email' register={register} errors={errors.email} />
+            <BasicInput name='name' placeholder='Your name' register={register} errors={errors.name} />
+            <BasicInput name='email' placeholder='Email' register={register} errors={errors.email} />
             <BasicInput
               name='phone'
               placeholder='Phone'

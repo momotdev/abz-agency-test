@@ -6,16 +6,12 @@ import { useInfiniteQuery } from 'react-query';
 import { fetchUsers } from '../../api/users';
 
 const GetRequestSection = () => {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
-    ['users'],
-    ({ pageParam }) => fetchUsers(pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        return lastPage.links.next_url ? { page: lastPage.page + 1 } : undefined;
-      },
-      refetchOnWindowFocus: false
-    }
-  );
+  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(['users'], ({ pageParam }) => fetchUsers(pageParam), {
+    getNextPageParam: (lastPage) => {
+      return lastPage.links.next_url ? { page: lastPage.page + 1 } : undefined;
+    },
+    refetchOnWindowFocus: false
+  });
 
   return (
     <section className='section get-request-section'>
