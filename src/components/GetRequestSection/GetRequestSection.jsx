@@ -9,7 +9,7 @@ const GetRequestSection = () => {
   const {
     data,
     hasNextPage,
-    fetchNextPage
+    fetchNextPage,
   } = useInfiniteQuery(['users'], ({pageParam}) => fetchUsers(pageParam), {
     getNextPageParam: (lastPage) => {
       return lastPage.links.next_url ? {page: lastPage.page + 1} : undefined;

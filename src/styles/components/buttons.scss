@@ -26,5 +26,6 @@
 
   &[disabled] {
     background-color: colors.$disabled-gray;
+    color: rgba(255, 255, 255, 0.87);
   }
 }
