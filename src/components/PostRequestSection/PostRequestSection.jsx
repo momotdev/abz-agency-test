@@ -8,6 +8,9 @@ import * as yup from "yup"
 import BasicButton from "../BasicButton/BasicButton";
 import {createUser} from "../../api/users";
 import successSVG from './assets/success-image.svg';
+import BasicInput from "../BasicInput/BasicInput";
+import FileUpload from "../FileUpload/FileUpload";
+import Preloader from "../Preloader/Preloader";
 
 const phoneRegExp = /^[+]?380([0-9]{9})$/;
 const FILE_SIZE = 5000000; // 5MB
@@ -53,54 +56,43 @@ const PostRequestSection = () => {
   });
   const queryClient = new useQueryClient();
   const [isRegistered, setIsRegistered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const {data} = useQuery(['positions'], fetchPositions,);
   const onSubmit = async (data) => {
+    setIsLoading(true);
     await createUser({...data, picture: data.picture[0]})
         .then(response => {
           if (response.success) {
             setIsRegistered(true);
             queryClient.invalidateQueries({queryKey: ['users']})
           } else {
+            /*In the design, we do not have any cases of error handling from server, so there I only use the log.*/
             console.error(response.message)
             console.table(response.fails)
           }
+          setIsLoading(false);
         })
 
   };
 
   return (
       <section className="post-request-section">
-        <div className="post-request-section__title">
+        {isLoading && (
+            <div className="post-request-section__preloader-wrapper">
+              <Preloader/>
+            </div>
+        )}
+        {!isLoading && (
+            <div className="post-request-section__title">
           {isRegistered ? "User successfully registered" : "Working with POST request"}
-        </div>
-        {!isRegistered && (<form onSubmit={handleSubmit(onSubmit)} className="post-request-section__form">
+        </div>)
+        }
+        {!isRegistered && !isLoading && (<form onSubmit={handleSubmit(onSubmit)} className="post-request-section__form">
           <div className="post-request-section__input-group">
-            <div className="post-request-section__input-box">
-              <input className="post-request-section__input"
-                     placeholder="Your name" {...register("name", {required: true, minLength: 2, maxLength: 60})} />
-              <label>Your name</label>
-              {errors.name &&
-                  <span
-                      className="post-request-section__helped-text post-request-section--error-text">{errors.name.message}</span>}
-            </div>
-            <div className="post-request-section__input-box">
-              <input className="post-request-section__input"
-                     placeholder="Email" {...register("email", {required: true})} />
-              <label>Email</label>
-              {errors.email &&
-                  <span
-                      className="post-request-section__helped-text post-request-section--error-text">{errors.email.message}</span>}
-            </div>
-
-            <div className="post-request-section__input-box">
-              <input className="post-request-section__input" type="tel"
-                     placeholder="Phone" {...register("phone", {required: true})} />
-              <label>Phone</label>
-              <span className="post-request-section__helped-text">+38 (XXX) XXX - XX - XX</span>
-              {errors.phone &&
-                  <span
-                      className="post-request-section__helped-text post-request-section--error-text">{errors.phone.message}</span>}
-            </div>
+            <BasicInput name="name" placeholder="Your name" register={register} errors={errors.name}/>
+            <BasicInput name="email" placeholder="Email" register={register} errors={errors.email}/>
+            <BasicInput name="phone" placeholder="Phone" helpText="+38 (0XX) XXX - XX - XX" register={register}
+                        errors={errors.phone}/>
           </div>
           <fieldset className="post-request-section__select">
             <label>Select your position</label>
@@ -115,27 +107,12 @@ const PostRequestSection = () => {
           {errors.position &&
               <span
                   className="post-request-section__helped-text post-request-section--error-text">{errors.position.message}</span>}
-
-          <div className="post-request-section__file">
-            <div>
-              <label className="post-request-section__file-label" htmlFor="picture">Upload</label>
-              <input className="post-request-section__file-input"
-                     type="file"
-                     {...register("picture")}
-                     id="picture"/>
-            </div>
-            {errors.picture &&
-                <span
-                    className="post-request-section__helped-text post-request-section--error-text">{errors.picture.message}</span>}
-          </div>
-
-
+          <FileUpload name="picture" register={register} errors={errors.picture}/>
           <div className="post-request-section__form-submit-button">
             <BasicButton type="submit">Sign up</BasicButton>
           </div>
         </form>)}
-
-        {isRegistered && (
+        {isRegistered && !isLoading && (
             <div className="post-request-section__form--success">
               <img src={successSVG} alt="Successfully registered"/>
             </div>

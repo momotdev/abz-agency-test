@@ -1,9 +1,12 @@
 @use '/src/styles/base/global';
 
 .user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 370px;
+  max-width: 370px;
   height: 254px;
-  text-align: center;
   line-height: 1.62;
   border-radius: 10px;
   background: #ffffff;
@@ -40,5 +43,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    width: 100%;
   }
 }

@@ -1,20 +1,4 @@
 @use '/src/styles/base/global';
-@use '/src/styles/base/colors';
-
-%default-input-style {
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 16px;
-  line-height: 1.62;
-  border-radius: 4px;
-  border: 1px solid #D0CFCF;
-  outline: none;
-  padding: 14px 16px;
-  background: transparent;
-
-  &::placeholder {
-    color: colors.$placeholder-gray;
-  }
-}
 
 .post-request-section {
   max-width: global.$layout-default-size;
@@ -34,32 +18,6 @@
     align-items: center;
   }
 
-  &__input-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-
-    & input:not(:placeholder-shown) + label {
-      display: block;
-    }
-
-    & label {
-      display: none;
-      position: absolute;
-      top: -5px;
-      left: 10px;
-      padding: 0 5px;
-      background: colors.$background-primary;
-      color: colors.$placeholder-gray;
-      font-size: 12px;
-      line-height: 1.16;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 50px;
-    }
-  }
-
   &__form {
     margin-top: 50px;
 
@@ -72,24 +30,6 @@
       justify-content: center;
       margin-top: 50px;
     }
-  }
-
-  &__input {
-    @extend %default-input-style;
-    width: 380px;
-    height: 54px;
-  }
-
-  &__helped-text {
-    color: colors.$placeholder-gray;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.16;
-    margin: 4px 0 0 16px;
-  }
-
-  &--error-text {
-    color: colors.$error-color;
   }
 
   &__radio-box {
@@ -173,41 +113,15 @@
       margin-bottom: 11px;
       line-height: 1.62;
     }
+
+    @media (max-width: global.$layout-breakpoint-tablet) {
+      width: 328px;
+    }
+
   }
-
-  &__file {
+  &__preloader-wrapper {
     display: flex;
-    flex-direction: column;
-    width: 380px;
-    margin-top: 47px;
-
-    > div {
-      display: flex;
-    }
-
-    &-input {
-      @extend %default-input-style;
-      width: auto;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-
-      &[type=file]::file-selector-button {
-        display: none;
-      }
-
-      &:not(:placeholder-shown) {
-        color: colors.$placeholder-gray;
-      }
-    }
-
-    &-label {
-      padding: 14px 15px;
-      color: rgba(0, 0, 0, 0.87);
-      border-radius: 4px 0 0 4px;
-      border: 1px solid rgba(0, 0, 0, 0.87);
-      line-height: 1.62;
-      cursor: pointer;
-    }
-
+    justify-content: center;
+    margin: 50px 0;
   }
 }

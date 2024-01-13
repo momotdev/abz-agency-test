@@ -1,0 +1,29 @@
+@use '/src/styles/base/colors';
+
+.preloader {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(
+                  from 180deg at 50% 50%,
+                  rgba(82, 0, 255, 0) 0deg,
+                  colors.$secondary 360deg
+  );
+  animation: spin 1s infinite linear;
+
+  &::before {
+    content: "";
+    border-radius: 50%;
+    width: 80%;
+    height: 80%;
+    background-color: colors.$background-primary;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
