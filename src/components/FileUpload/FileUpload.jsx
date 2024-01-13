@@ -8,6 +8,7 @@ const FileUpload = ({name, register, errors, ...props}) => {
                  htmlFor="picture">Upload</label>
           <input className={"input__file-input" + (errors ? " input__file-input--error" : '')}
                  type="file"
+                 accept="image/jpeg"
                  {...register(name)}
                  {...props}
                  id="picture"/>
