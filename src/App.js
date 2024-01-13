@@ -7,8 +7,6 @@ import PostRequestSection from "./components/PostRequestSection/PostRequestSecti
 
 const queryClient = new QueryClient()
 
-// TODO: FIX INDENTS
-// TODO: Buttons size
 function App() {
   return (
       <QueryClientProvider client={queryClient}>

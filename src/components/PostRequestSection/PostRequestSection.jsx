@@ -49,10 +49,10 @@ const PostRequestSection = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors}
+    formState: {errors, isValid}
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onSubmit",
+    mode: "onChange",
   });
   const queryClient = new useQueryClient();
   const [isRegistered, setIsRegistered] = useState(false);
@@ -109,7 +109,7 @@ const PostRequestSection = () => {
                   className="post-request-section__helped-text post-request-section--error-text">{errors.position.message}</span>}
           <FileUpload name="picture" register={register} errors={errors.picture}/>
           <div className="post-request-section__form-submit-button">
-            <BasicButton type="submit">Sign up</BasicButton>
+            <BasicButton type="submit" disabled={!isValid}>Sign up</BasicButton>
           </div>
         </form>)}
         {isRegistered && !isLoading && (

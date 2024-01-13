@@ -2,6 +2,7 @@
   "name": "abz-agency-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@testing-library/jest-dom": "^5.17.0",

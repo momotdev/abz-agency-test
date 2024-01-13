@@ -73,7 +73,7 @@
 
     &-input {
       @extend %default-input-style;
-      width: auto;
+      width: 100%;
       border-radius: 0 4px 4px 0;
       cursor: pointer;
 
@@ -105,7 +105,7 @@
     }
 
     @media (max-width: global.$layout-breakpoint-tablet) {
-      width: 328px;
+      max-width: 328px;
     }
 
   }
